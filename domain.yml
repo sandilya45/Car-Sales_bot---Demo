@@ -1,0 +1,167 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- new_car:
+    use_entities: []
+- inform
+- affirm
+- deny
+- stop
+- thankyou:
+    triggers: action_thankyou
+- greet:
+    triggers: action_greet
+- bot_challenge
+- existing_policy
+- car_info
+- car_model_intent
+- car_variant_intent
+- car_mileage_intent
+- car_type_intent
+- car_year_intent
+- car_info_review_intent
+- send_email
+- get_quote
+- restart
+- get_correct_cus_info
+- get_correct_car_info
+- out_of_scope:
+    triggers: action_out_of_scope
+entities:
+- phone
+- customer_name
+- email
+slots:
+  customer_name:
+    type: unfeaturized
+    auto_fill: false
+  email_id:
+    type: unfeaturized
+    auto_fill: false
+  phone_no:
+    type: unfeaturized
+    auto_fill: false
+  slot_car_make:
+    type: text
+  slot_car_mileage:
+    type: text
+  slot_car_model:
+    type: text
+  slot_car_type:
+    type: text
+  slot_car_variant:
+    type: text
+  slot_car_year:
+    type: text
+responses:
+  utter_ask_phone_no:
+  - text: Please enter valid phone no
+  utter_ask_customer_name:
+  - text: Please enter valid name?
+  utter_ask_email_id:
+  - text: Please enter valid email
+  utter_existing_policy:
+  - text: Please contact customer care for assistance!
+  utter_mail_send:
+  - text: Quotation has been sent successfully!
+  utter_submit:
+  - text: All done!
+  utter_slots_values:
+  - text: "Following are the details you have provided \n - customer name: {customer_name}\n\
+      \ - phone no: {phone_no}\n - email id: {email_id}\n"
+  utter_car_info:
+  - text: "Options chosen for the desired car are:\n - car make: {slot_car_make}\n\
+      \ - car model: {slot_car_model}\n - car variant: {slot_car_variant}\n - car\
+      \ year: {slot_car_year} \n - car type: {slot_car_type} \n - car mileage: {slot_car_mileage}\
+      \ \n"
+  utter_noworries:
+  - text: you are welcome :)
+  utter_check_car_info:
+  - text: Are the above details correct?
+    buttons:
+    - title: yes
+      payload: /get_quote
+    - title: no
+      payload: /get_correct_car_info
+  utter_get_quote:
+  - text: "The quote for\n - car make: {slot_car_make}\n - car model: {slot_car_model}\n\
+      \ - car variant: {slot_car_variant}\n - car year: {slot_car_year} \n - car type:\
+      \ {slot_car_type} \n - car mileage: {slot_car_mileage} is 5000 dollars."
+  utter_send_email:
+  - text: Do you want to receive detailed quotation by
+    buttons:
+    - title: Send Email
+      payload: /send_email
+    - title: Don't send the Quotation
+      payload: /thankyou
+  utter_ask_continue:
+  - text: Are the above details correct?
+    buttons:
+    - title: yes
+      payload: /car_info
+    - title: no
+      payload: /get_correct_cus_info
+  utter_wrong_phone_no:
+  - text: Please enter correct phone no
+  utter_default:
+  - text: sorry, I didn't understand you, please try input something else
+  utter_correct_car_details:
+  - text: Please select right car details
+  utter_greet:
+  - text: Hey! How are you? I am Disha, intelligent assistant from krtrimaiq. I can
+      help you find your dream car.
+  utter_type_customer:
+  - text: Before we Begin, please Let me know the following details. It will help
+      us to serve you better?
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_restart:
+  - text: restarted
+  utter_wrong_email_id:
+  - text: Please enter a valid email id
+  utter_cus_info:
+  - text: No problem! Please enter your details again.
+  utter_out_of_scope:
+  - text: Sorry, I can’t handle that request.
+  utter_wrong_customer_name:
+  - text: Please enter a valid name
+actions:
+- action_car_make
+- action_car_model
+- action_car_variant
+- action_car_year
+- action_car_type
+- action_car_mileage
+- action_send_mail
+- action_correct_cus_info
+- action_correct_car_info
+- action_out_of_scope
+- action_greet
+- action_thankyou
+- utter_ask_phone_no
+- utter_ask_customer_name
+- utter_ask_email_id
+- utter_existing_policy
+- utter_mail_send
+- utter_submit
+- utter_slots_values
+- utter_car_info
+- utter_noworries
+- utter_check_car_info
+- utter_get_quote
+- utter_send_email
+- utter_ask_continue
+- utter_wrong_phone_no
+- utter_default
+- utter_correct_car_details
+- utter_greet
+- utter_type_customer
+- utter_iamabot
+- utter_restart
+- utter_wrong_email_id
+- utter_cus_info
+- utter_out_of_scope
+- utter_wrong_customer_name
+forms:
+- new_car_form
